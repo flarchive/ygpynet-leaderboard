@@ -1,0 +1,74 @@
+huseyinfiliz-leaderboard:
+  admin:
+    tabs:
+      general: General
+      points: Points
+      exclusions: Exclusions
+    permissions:
+      view_leaderboard: View Leaderboard
+    modals:
+      save: Save
+      cancel: Cancel
+      close: Close
+      select_groups: Select Groups
+      select_tags: Select Tags
+      none_selected: None selected
+    settings:
+      leaderboard_name_label: Leaderboard Name
+      points_source_help: Points are provided by the Point System extension. Core earning rules (discussions, posts, likes, check-in) are configured on its settings page; the values below cover the leaderboard's extra point sources. The points label shown next to each score reuses the currency name configured there.
+      points_daily_login_label: Points for daily login
+      points_reaction_received_label: Points for receiving a reaction
+      points_reaction_given_label: Points for giving a reaction
+      points_best_answer_label: Points for best answer
+      points_badge_earned_label: Points for earning a badge
+      points_upvote_received_label: Points for receiving an upvote
+      points_downvote_received_label: Points for receiving a downvote
+      excluded_groups_label: Excluded Groups
+      excluded_groups_help: Users in selected groups will be excluded from the leaderboard.
+      excluded_tags_label: Excluded Tags
+      excluded_tags_help: Discussions with selected tags will not earn points.
+      section_core: Core Points
+      section_reactions: Reactions
+      section_best_answer: Best Answer
+      section_badges: Badges
+      section_gamification: Gamification
+      extension_not_enabled: This extension is not enabled.
+
+  forum:
+    permission_denied: You do not have permission to view the leaderboard.
+    category:
+      points: Points
+      likes_received: Likes Received
+      likes_given: Likes Given
+      best_answers: Best Answers
+      checkin_streak: Check-in Streak
+      posts: Replies
+      discussions: Discussions
+    period:
+      daily: Daily
+      weekly: Weekly
+      monthly: Monthly
+      quarterly: Quarterly
+      yearly: Yearly
+      all: All Time
+    unit:
+      likes_received: likes
+      likes_given: likes
+      best_answers: times
+      checkin_streak: days
+      posts: posts
+      discussions: threads
+    podium:
+      first: 1st
+      second: 2nd
+      third: 3rd
+      stat_top_streak: Days at #1
+    contenders:
+      title: Top Contenders
+    honorable:
+      title: Honorable Mentions
+    list:
+      rank: Rank
+      points: "{points} {label}"
+      load_more: Show More
+      no_results: No results for this period.

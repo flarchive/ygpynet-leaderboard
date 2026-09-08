@@ -1,0 +1,97 @@
+{
+  "name": "ygpynet/leaderboard",
+  "description": "A points-based leaderboard for Flarum powered by ygpynet/point-system, with period filtering and podium display.",
+  "keywords": [
+    "flarum",
+    "leaderboard",
+    "points",
+    "gamification",
+    "ranking"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/ygpynet/leaderboard/issues",
+    "source": "https://github.com/ygpynet/leaderboard",
+    "forum": "https://discuss.flarum.org/d/38834-leaderboard-points-based-ranking-system"
+  },
+  "require": {
+    "php": "^8.2",
+    "flarum/core": "^2.0.0-beta",
+    "ygpynet/point-system": "^1.0"
+  },
+  "suggest": {
+    "flarum/tags": "Exclude discussions by tag from earning points",
+    "fof/reactions": "Award points for receiving reactions",
+    "fof/best-answer": "Award points for best answers",
+    "fof/badges": "Award points for earning badges",
+    "fof/gamification": "Award points for votes"
+  },
+  "authors": [
+    {
+      "name": "YGPY",
+      "email": "ygpynet@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ygpynet\\Leaderboard\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Leaderboard",
+      "category": "feature",
+      "icon": {
+        "name": "fas fa-trophy",
+        "color": "#fff",
+        "backgroundColor": "#3498db"
+      },
+      "optional_dependencies": [
+        "flarum/tags",
+        "fof/reactions",
+        "fof/best-answer",
+        "fof/badges",
+        "fof/gamification"
+      ]
+    },
+    "flarum-cli": {
+      "modules": {
+        "admin": true,
+        "forum": true,
+        "js": true,
+        "jsCommon": true,
+        "css": true,
+        "locale": true,
+        "gitConf": true,
+        "githubActions": true,
+        "prettier": true,
+        "typescript": true,
+        "bundlewatch": false,
+        "backendTesting": false,
+        "editorConfig": true,
+        "styleci": true
+      }
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "analyse:phpstan": "phpstan analyse",
+    "test:unit": "@php tests/UnitTests.php",
+    "test:e2e": "@php tests/AutomatedTest.php"
+  },
+  "scripts-descriptions": {
+    "analyse:phpstan": "Run PHPStan static analysis.",
+    "test:unit": "Run offline unit tests (no database required).",
+    "test:e2e": "Run the end-to-end suite against the live site (requires a booted Flarum install)."
+  },
+  "require-dev": {
+    "flarum/phpstan": "^2.0.0-beta",
+    "flarum/tags": "*",
+    "fof/reactions": "*",
+    "fof/best-answer": "*",
+    "fof/gamification": "*"
+  }
+}
