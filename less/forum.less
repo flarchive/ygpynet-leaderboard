@@ -1,0 +1,632 @@
+// Leaderboard Page
+
+// Filter bar: category dropdown + period pills.
+// NOTE: no overflow-x here — setting overflow-x to anything other than visible
+// forces overflow-y to auto too (CSS spec), which would clip the absolutely
+// positioned dropdown menu hanging below this bar and make it look like the
+// toggle does nothing. Buttons wrap instead of scrolling on narrow screens.
+.LeaderboardPage-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+  padding: 2px 0;
+}
+
+.LeaderboardPage-refreshBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--control-bg);
+  background: var(--control-bg);
+  color: var(--muted-color);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: var(--heading-color, var(--text-color));
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .fas {
+    font-size: 13px;
+  }
+}
+
+.LeaderboardPage-filterBtn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--control-bg);
+  background: var(--control-bg);
+  color: var(--muted-color);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    color: var(--heading-color, var(--text-color));
+  }
+
+  &.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+  }
+}
+
+.LeaderboardPage-empty {
+  text-align: center;
+  padding: 60px 0;
+  color: var(--muted-color);
+}
+
+// Category dropdown inside the filter bar
+.LeaderboardPage-categoryDropdown {
+  flex-shrink: 0;
+
+  .Dropdown-menu {
+    min-width: 200px;
+
+    li > .Button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      text-align: left;
+
+      .fas:first-child {
+        width: 16px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.LeaderboardPage-filtersSpacer {
+  flex: 1;
+  min-width: 8px;
+}
+
+// Per-category action stats on contender cards
+.LeaderboardContenders-stats {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted-color);
+
+  .LeaderboardContenders-stat .fas {
+    margin-right: 4px;
+  }
+}
+
+// Category pills — icons + labels, sit above the period pills
+.LeaderboardPage-categoryFilters {
+  margin-bottom: 8px;
+
+  .LeaderboardPage-filterBtn .fas {
+    margin-right: 5px;
+    font-size: 12px;
+  }
+}
+
+.LeaderboardPage-content {
+  margin-bottom: 20px;
+}
+
+// ──────────────────────────────────────────────────────────────
+//  Podium Section — Top 3 (bigger, wider, fully clickable)
+// ──────────────────────────────────────────────────────────────
+.LeaderboardPodium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 30px;
+  padding: 30px 0 20px;
+}
+
+.LeaderboardPodium-place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 24px 20px;
+  border-radius: 10px;
+  min-width: 180px;
+  max-width: 240px;
+  flex: 1;
+  position: relative;
+  background: var(--control-bg);
+  border: 1px solid var(--control-bg);
+  border-top: 3px solid var(--control-bg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+// Gold — 1st place
+.LeaderboardPodium-place--1 {
+  order: 2;
+  border-top-color: #d4a730;
+  padding: 28px 28px 24px;
+
+  .LeaderboardPodium-avatar .Avatar {
+    width: 96px;
+    height: 96px;
+    font-size: 38px;
+  }
+}
+
+// Silver — 2nd place
+.LeaderboardPodium-place--2 {
+  order: 1;
+  border-top-color: #a0a0a0;
+
+  .LeaderboardPodium-avatar .Avatar {
+    width: 76px;
+    height: 76px;
+    font-size: 30px;
+  }
+}
+
+// Bronze — 3rd place
+.LeaderboardPodium-place--3 {
+  order: 3;
+  border-top-color: #b87333;
+
+  .LeaderboardPodium-avatar .Avatar {
+    width: 76px;
+    height: 76px;
+    font-size: 30px;
+  }
+}
+
+.LeaderboardPodium-medal {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.LeaderboardPodium-crown {
+  color: #d4a730;
+  font-size: 18px;
+}
+
+.LeaderboardPodium-medal--gold .LeaderboardPodium-rankNumber {
+  color: #d4a730;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.LeaderboardPodium-medal--silver .LeaderboardPodium-rankNumber {
+  color: var(--muted-color);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.LeaderboardPodium-medal--bronze .LeaderboardPodium-rankNumber {
+  color: #b87333;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.LeaderboardPodium-avatar {
+  margin-bottom: 12px;
+
+  .Avatar {
+    border-radius: 50%;
+  }
+
+  img.Avatar {
+    object-fit: cover;
+  }
+}
+
+.LeaderboardPodium-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 15px;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--heading-color, var(--text-color));
+}
+
+.LeaderboardPodium-points {
+  font-size: 13px;
+  color: var(--muted-color);
+  margin-bottom: 10px;
+}
+
+// Podium stats row
+.LeaderboardPodium-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--body-bg, rgba(0, 0, 0, 0.06));
+  width: 100%;
+}
+
+.LeaderboardPodium-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--muted-color);
+  cursor: default;
+
+  .fas {
+    font-size: 11px;
+    opacity: 0.7;
+  }
+}
+
+// ──────────────────────────────────────────────────────────────
+//  Top Contenders Grid (#4-#10) — 7 enhanced square cards
+// ──────────────────────────────────────────────────────────────
+.LeaderboardContenders {
+  margin-bottom: 30px;
+}
+
+.LeaderboardContenders-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--heading-color, var(--text-color));
+
+  .fas {
+    color: var(--primary-color);
+  }
+}
+
+.LeaderboardContenders-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+
+  // Tüm kartların eşit genişlikte olması için
+  > * {
+    min-width: 0;
+  }
+}
+
+.LeaderboardContenders-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 16px 8px 14px;
+  background: var(--control-bg);
+  border: 1px solid var(--control-bg);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.LeaderboardContenders-rank {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--muted-color);
+}
+
+.LeaderboardContenders-avatar {
+  .Avatar {
+    width: 52px;
+    height: 52px;
+    font-size: 21px;
+    border-radius: 50%;
+  }
+
+  img.Avatar {
+    object-fit: cover;
+  }
+}
+
+.LeaderboardContenders-name {
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: var(--heading-color, var(--text-color));
+}
+
+.LeaderboardContenders-points {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted-color);
+}
+
+// ──────────────────────────────────────────────────────────────
+//  Honorable Mentions (#11+) — compact row list
+// ──────────────────────────────────────────────────────────────
+.LeaderboardHonorable {
+  margin-bottom: 20px;
+}
+
+.LeaderboardHonorable-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--heading-color, var(--text-color));
+
+  .fas {
+    color: var(--primary-color);
+  }
+}
+
+.LeaderboardHonorable-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px 12px;
+}
+
+.LeaderboardHonorable-loadMore {
+  text-align: center;
+  padding: 15px;
+}
+
+// Leaderboard Item — compact row (used in honorable list)
+.LeaderboardItem {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  background: var(--control-bg);
+  transition: background 0.15s ease, opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.8;
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.LeaderboardItem-rank {
+  width: 36px;
+  font-weight: bold;
+  color: var(--muted-color);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.LeaderboardItem-avatar {
+  margin-right: 10px;
+  flex-shrink: 0;
+
+  .Avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+    border-radius: 50%;
+  }
+
+  img.Avatar {
+    object-fit: cover;
+  }
+}
+
+.LeaderboardItem-name {
+  font-weight: 600;
+  font-size: 13px;
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--heading-color, var(--text-color));
+}
+
+.LeaderboardItem-points {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--muted-color);
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+// ──────────────────────────────────────────────────────────────
+//  Skeleton Loading
+// ──────────────────────────────────────────────────────────────
+@keyframes leaderboard-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.08;
+  }
+}
+
+.LeaderboardSkeleton-pulse {
+  background: currentColor;
+  border-radius: 4px;
+  animation: leaderboard-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.LeaderboardSkeleton-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.LeaderboardSkeleton-badge {
+  width: 32px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.LeaderboardSkeleton-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+}
+
+.LeaderboardPodium-place--1 .LeaderboardSkeleton-avatar {
+  width: 96px;
+  height: 96px;
+}
+
+.LeaderboardSkeleton-avatarSm {
+  width: 52px;
+  height: 52px;
+}
+
+.LeaderboardSkeleton-avatarXs {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.LeaderboardSkeleton-text {
+  width: 80px;
+  height: 14px;
+}
+
+.LeaderboardSkeleton-textSm {
+  width: 50px;
+  height: 12px;
+}
+
+.LeaderboardSkeleton-sectionTitle {
+  width: 140px;
+  height: 18px;
+  margin-bottom: 12px;
+}
+
+.LeaderboardSkeleton-rank {
+  width: 28px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.LeaderboardSkeleton-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+// ──────────────────────────────────────────────────────────────
+//  Responsive
+// ──────────────────────────────────────────────────────────────
+@media (max-width: 767px) {
+  // On mobile: #1 full-width hero on top, #2 & #3 side by side below
+  .LeaderboardPage .LeaderboardPodium {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 10px 0;
+  }
+
+  .LeaderboardPage .LeaderboardPodium .LeaderboardPodium-place {
+    min-width: 0;
+    max-width: none;
+    padding: 16px 12px;
+    flex: 1 1 calc(50% - 8px);
+  }
+
+  // Hero card — full width on its own row
+  .LeaderboardPage .LeaderboardPodium .LeaderboardPodium-place--1 {
+    order: -1;
+    flex-basis: 100%;
+    padding: 20px 16px;
+
+    .LeaderboardPodium-avatar .Avatar {
+      width: 72px;
+      height: 72px;
+      font-size: 28px;
+    }
+  }
+
+  .LeaderboardPage .LeaderboardPodium .LeaderboardPodium-place--2 {
+    order: 2;
+
+    .LeaderboardPodium-avatar .Avatar {
+      width: 52px;
+      height: 52px;
+      font-size: 21px;
+    }
+  }
+
+  .LeaderboardPage .LeaderboardPodium .LeaderboardPodium-place--3 {
+    order: 3;
+
+    .LeaderboardPodium-avatar .Avatar {
+      width: 52px;
+      height: 52px;
+      font-size: 21px;
+    }
+  }
+
+  .LeaderboardPage .LeaderboardPodium .LeaderboardPodium-name {
+    font-size: 13px;
+  }
+
+  .LeaderboardPage .LeaderboardPodium .LeaderboardPodium-points {
+    font-size: 12px;
+  }
+
+  .LeaderboardContenders-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .LeaderboardHonorable-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .LeaderboardContenders-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,72 @@
+ygpynet-leaderboard:
+  admin:
+    tabs:
+      general: 常规
+      points: 积分
+      exclusions: 排除设置
+    permissions:
+      view_leaderboard: 查看排行榜
+    modals:
+      save: 保存
+      cancel: 取消
+      close: 关闭
+      select_groups: 选择用户组
+      select_tags: 选择标签
+      none_selected: 未选择
+    settings:
+      leaderboard_name_label: 排行榜名称
+      points_source_help: 积分由「积分系统」扩展提供。核心获取规则（发帖、回帖、点赞、签到）在其设置页中配置；以下数值仅覆盖排行榜的额外积分来源。分数旁显示的单位复用其设置中的货币名称。
+      points_reaction_received_label: 收到表情的积分
+      points_reaction_given_label: 发出表情的积分
+      points_best_answer_label: 被采纳为最佳答案的积分
+      points_badge_earned_label: 获得徽章的积分
+      points_upvote_received_label: 收到赞同票的积分
+      points_downvote_received_label: 收到反对票的积分（负数即扣分）
+      excluded_groups_label: 排除用户组
+      excluded_groups_help: 所选用户组中的用户将不会出现在排行榜中。
+      excluded_tags_label: 排除标签
+      excluded_tags_help: 带有所选标签的讨论将不产生积分。
+      section_reactions: 表情回应
+      section_best_answer: 最佳答案
+      section_badges: 徽章
+      section_gamification: 投票
+      extension_not_enabled: 该扩展未启用。
+
+  forum:
+    permission_denied: 你没有权限查看排行榜。
+    category:
+      points: 积分榜
+      likes_received: 获赞榜
+      likes_given: 点赞榜
+      best_answers: 最佳答案榜
+      checkin_streak: 连续签到榜
+      posts: 回帖榜
+      discussions: 发帖榜
+    period:
+      daily: 今日
+      weekly: 本周
+      monthly: 本月
+      quarterly: 本季
+      yearly: 今年
+      all: 总榜
+    unit:
+      likes_received: 赞
+      likes_given: 赞
+      best_answers: 次
+      checkin_streak: 天
+      posts: 条
+      discussions: 条
+    podium:
+      first: 第一名
+      second: 第二名
+      third: 第三名
+      stat_top_streak: 连续登顶
+    contenders:
+      title: 竞争者
+    honorable:
+      title: 优秀成员
+    list:
+      rank: 排名
+      points: "{points} {label}"
+      load_more: 显示更多
+      no_results: 该时间段内没有数据。

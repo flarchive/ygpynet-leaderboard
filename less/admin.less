@@ -1,0 +1,249 @@
+// Scoped variables — hf-leader prefix to avoid conflicts with other extensions
+@hf-leader-card-radius: 8px;
+@hf-leader-transition-speed: 180ms;
+
+// Admin Settings Page — Tab-based layout (awards-aligned pill style)
+.LeaderboardSettings {
+  padding: 20px 25px;
+}
+
+.LeaderboardSettings-header {
+  margin-bottom: 25px;
+}
+
+.LeaderboardSettings-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--control-bg);
+  padding: 4px;
+  border-radius: @hf-leader-card-radius;
+
+  .Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    flex: 1;
+    white-space: nowrap;
+    background: transparent;
+    color: var(--muted-color);
+    transition: all @hf-leader-transition-speed ease;
+
+    .Button-icon {
+      display: inline-block;
+      margin-right: 6px;
+      font-size: 14px;
+    }
+
+    &:hover {
+      color: var(--link-color);
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    &.Button--primary {
+      color: var(--primary-color);
+      background: var(--body-bg);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      font-weight: 700;
+    }
+  }
+}
+
+.LeaderboardSettings-content {
+  background: var(--body-bg);
+  border: 1px solid var(--control-bg);
+  border-radius: @hf-leader-card-radius;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  margin-top: 16px;
+
+  .Form-group {
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+}
+
+// Accordion sections for points tab
+.LeaderboardSettings-accordion {
+  border: 1px solid var(--control-bg);
+  border-radius: @hf-leader-card-radius;
+  margin-bottom: 10px;
+  overflow: hidden;
+
+  &--open {
+    .LeaderboardSettings-accordionHeader {
+      border-bottom: 1px solid var(--control-bg);
+    }
+  }
+
+  &--disabled {
+    .LeaderboardSettings-accordionBody {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}
+
+.LeaderboardSettings-accordionHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: var(--control-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  transition: background @hf-leader-transition-speed ease;
+
+  &:hover {
+    background: var(--control-bg-shaded);
+  }
+}
+
+.LeaderboardSettings-accordionIcon {
+  margin-right: 10px;
+  font-size: 14px;
+  color: var(--primary-color);
+  width: 18px;
+  text-align: center;
+}
+
+.LeaderboardSettings-accordionTitle {
+  flex: 1;
+}
+
+.LeaderboardSettings-accordionBadge {
+  font-size: 11px;
+  font-weight: normal;
+  font-style: italic;
+  color: var(--muted-color);
+  margin-right: 12px;
+}
+
+.LeaderboardSettings-accordionChevron {
+  font-size: 12px;
+  color: var(--muted-color);
+  transition: transform 0.2s ease;
+}
+
+.LeaderboardSettings-accordionBody {
+  padding: 15px 16px;
+
+  .Form-group {
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Selected items display
+.LeaderboardSettings-selectedItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+  min-height: 28px;
+}
+
+.LeaderboardSettings-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: var(--control-bg);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.LeaderboardSettings-none {
+  font-size: 13px;
+  color: var(--muted-color);
+  font-style: italic;
+}
+
+// Select Groups Modal
+.SelectGroupsModal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.SelectGroupsModal-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--control-bg);
+  }
+
+  input[type="checkbox"] {
+    margin: 0;
+  }
+}
+
+.SelectGroupsModal-name {
+  font-size: 14px;
+}
+
+.SelectGroupsModal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+// Select Tags Modal — same pattern as Select Groups Modal, plus indentation
+// for child tags so the parent/child hierarchy stays visually clear even
+// though each row is an independently selectable checkbox.
+.SelectTagsModal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 15px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.SelectTagsModal-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--control-bg);
+  }
+
+  input[type="checkbox"] {
+    margin: 0;
+  }
+
+  &--child {
+    padding-left: 28px;
+  }
+}
+
+.SelectTagsModal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
