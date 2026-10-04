@@ -2,13 +2,14 @@
 
 > **Read-only archive of released versions of ygpynet/leaderboard.** Not for installation: use [Packagist](https://packagist.org/packages/ygpynet/leaderboard) or the [upstream repository](https://github.com/ygpynet/leaderboard).
 
-**0** versions archived · Latest: [`v1.0.1`](https://github.com/flarchive/ygpynet-leaderboard/tree/archive/v1.0.1) · License: `MIT` · Flarum: `^2.0.0-beta`
+**2** versions archived · Latest: [`v1.0.1`](https://github.com/flarchive/ygpynet-leaderboard/tree/archive/v1.0.1) · License: `MIT` · Flarum: `^2.0.0-beta`
 
 ## Archived Versions
 
 | Version | Released | Flarum | Source |
 |---|---|---|---|
-| — | — | — | — |
+| `v1.0.0` | 2026-09-08 | `^2.0.0-beta` | [Browse](https://github.com/flarchive/ygpynet-leaderboard/tree/archive/v1.0.0) |
+| `v1.0.1` | 2026-09-08 | `^2.0.0-beta` | [Browse](https://github.com/flarchive/ygpynet-leaderboard/tree/archive/v1.0.1) |
 
 Catalog entry: [packages/ygpynet-leaderboard.json](https://github.com/flarchive/archive-index/blob/main/packages/ygpynet-leaderboard.json)
 
